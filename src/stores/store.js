@@ -1,7 +1,6 @@
 import Reflux from 'reflux';
 import StateMixin from 'reflux-state-mixin';
 import StatusActions from 'actions';
-// import delay from 'lodash.delay';
 
 /**
  * Status store. The store object consists of the following options:

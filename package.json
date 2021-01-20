@@ -119,7 +119,6 @@
     "webpack-sources": "1.0.1"
   },
   "dependencies": {
-    "lodash.delay": "^4.1.1",
     "lodash.isempty": "^4.4.0"
   }
 }

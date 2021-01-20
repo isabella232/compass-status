@@ -22,15 +22,8 @@ const StatusStore = Reflux.createStore({
   onActivated(appRegistry) {
     appRegistry.on('compass:status:show-progress-bar', this.showProgressBar.bind(this));
     appRegistry.on('compass:status:show-indeterminate-progress-bar', this.showIndeterminateProgressBar.bind(this));
-    appRegistry.on('compass:status:hide-progress-bar', this.hideProgressBar.bind(this));
-    appRegistry.on('compass:status:set-progress-value', this.setProgressValue.bind(this));
-    appRegistry.on('compass:status:inc-progress-value', this.incProgressValue.bind(this));
-    appRegistry.on('compass:status:enable-progress-trickle', this.enableProgressTrickle.bind(this));
-    appRegistry.on('compass:status:disable-progress-trickle', this.disableProgressTrickle.bind(this));
     appRegistry.on('compass:status:set-message', this.setMessage.bind(this));
     appRegistry.on('compass:status:clear-message', this.clearMessage.bind(this));
-    appRegistry.on('compass:status:show-animation', this.showAnimation.bind(this));
-    appRegistry.on('compass:status:hide-animation', this.hideAnimation.bind(this));
     appRegistry.on('compass:status:show-static-sidebar', this.showStaticSidebar.bind(this));
     appRegistry.on('compass:status:hide-static-sidebar', this.hideStaticSidebar.bind(this));
     appRegistry.on('compass:status:set-subview', this.setSubview.bind(this));
@@ -92,13 +85,6 @@ const StatusStore = Reflux.createStore({
     });
   },
 
-  hideProgressBar() {
-    this.disableProgressTrickle();
-    this.setState({
-      progressbar: false
-    });
-  },
-
   configure(options) {
     // `trickle` is the only option with a "side-effect", all other
     // state variables are handled by the status component.
@@ -108,21 +94,6 @@ const StatusStore = Reflux.createStore({
       this.disableProgressTrickle();
     }
     this.setState(options);
-  },
-
-  setProgressValue(value) {
-    this.setState({
-
-      visible: true,
-      progress: value
-    });
-  },
-
-  incProgressValue(value) {
-    this.setState({
-      visible: true,
-      progress: this.state.progress + value
-    });
   },
 
   enableProgressTrickle() {

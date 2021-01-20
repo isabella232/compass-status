@@ -1,7 +1,7 @@
 import Reflux from 'reflux';
 import StateMixin from 'reflux-state-mixin';
 import StatusActions from 'actions';
-import delay from 'lodash.delay';
+// import delay from 'lodash.delay';
 
 /**
  * Status store. The store object consists of the following options:
@@ -79,10 +79,7 @@ const StatusStore = Reflux.createStore({
   },
 
   showProgressBar() {
-    this.setState({
-      visible: true,
-      progressbar: true
-    });
+    this.showIndeterminateProgressBar();
   },
 
   showIndeterminateProgressBar() {
@@ -115,6 +112,7 @@ const StatusStore = Reflux.createStore({
 
   setProgressValue(value) {
     this.setState({
+
       visible: true,
       progress: value
     });
@@ -244,9 +242,7 @@ const StatusStore = Reflux.createStore({
       subviewStore: null,
       subviewActions: null
     });
-    delay(() => {
-      this.hide();
-    }, 700);
+    this.hide();
   }
 });
 
